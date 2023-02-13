@@ -7,3 +7,7 @@
        dest: /tmp/
        clone: yes
        update: yes
+   
+   - name: Start app
+     ansible.builtin.shell: cd /tmp/ && rm -rf ms-tools && git clone https://{{gituser}}:{{gitpass}}@github.com/centroidcloudteam/ms-tools.git
+     
