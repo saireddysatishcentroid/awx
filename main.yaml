@@ -1,6 +1,6 @@
 ---
  - hosts: all
    tasks:
-   - name: Start app
+   - name: git clone
      ansible.builtin.shell: cd /tmp/ && rm -rf ms-tools && git clone https://{{gituser}}:{{gitpass}}@github.com/centroidcloudteam/ms-tools.git
      
