@@ -3,7 +3,7 @@
    tasks:
    - name: Clone a github repository
      git:
-       repo: https://saireddysatishcentroid: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@github.com/centroidcloudteam/ms-tools.git
+       repo: https://{{gituser}}:{{gitpass}}@github.com/centroidcloudteam/ms-tools.git
        dest: /tmp/
        clone: yes
        update: yes
