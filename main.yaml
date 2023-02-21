@@ -1,0 +1,13 @@
+- name: Check ADMIN_SCRIPTS_HOME
+  ansible.builtin.shell: . ~/.bash_profile >> /dev/null; env |grep ADMIN_SCRIPTS_HOME|awk -F '=' '{print $2}'
+  args:
+    executable: /bin/bash
+  register: ADMIN_SCRIPTS_HOME
+
+- set_fact:
+    ADMIN_SCRIPTS_HOME: "{{ ADMIN_SCRIPTS_HOME.stdout }}"
+
+- name: stopping app
+  ansible.builtin.shell: "bash adstpall.sh -mode=allnodes apps/{{APPS_PASS}} <<EOF \n{{WEBLOGIC_PASS}} \nEOF\n"
+  args:
+    chdir: "{{ ADMIN_SCRIPTS_HOME }}"
